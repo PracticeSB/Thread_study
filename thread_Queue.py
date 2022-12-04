@@ -1,20 +1,25 @@
 import threading
+import time
 from queue import Queue
 
 #Queue
 q = Queue(maxsize=10)
 
-def func(queue):
-    print('Hello World')
-    for i in range(10):
-        queue.put(i)
+def func(q):
+    while True:
+        start_time = time.time()
+        print('Hello World')
+        time.sleep(0.1)
+        end_time = time.time()
+        interval = end_time - start_time
+        #print(interval)
+        q.put(interval)
 
-def func2(queue):
-    print('Hello world')
-    while not queue.empty():
-        item = queue.get()
+def func2(q):
+    while True:
+        item = q.get()
         print(item)
-        queue.task_done()
+
 
 thread1 = threading.Thread(target=func, args=(q,))
 thread1.start()
