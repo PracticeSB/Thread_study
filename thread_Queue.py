@@ -3,7 +3,7 @@ import time
 from queue import Queue
 
 #Queue
-q = Queue(maxsize=10)
+q = Queue(maxsize=0)
 
 def func(q):
     while True:
@@ -23,6 +23,6 @@ def func2(q):
 
 thread1 = threading.Thread(target=func, args=(q,))
 thread1.start()
-
 thread2 = threading.Thread(target=func2, args=(q,))
 thread2.start()
+
