@@ -23,8 +23,6 @@ def tf2(q):
             print('tf2 function')
             flag = True
 
-event_lock = threading.Event()
-
 t1 = threading.Thread(target=tf,args =(q,))
 t2 = threading.Thread(target=tf2,args =(q,))
 t1.start()
