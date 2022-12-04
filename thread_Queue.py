@@ -2,8 +2,7 @@ import threading
 from queue import Queue
 
 #Queue
-# 10칸 (LIFO) - Last Input First Out
-q = Queue()
+q = Queue(maxsize=10)
 
 def func(queue):
     print('Hello World')
@@ -12,7 +11,7 @@ def func(queue):
 
 def func2(queue):
     print('Hello world')
-    while queue.empty():
+    while not queue.empty():
         item = queue.get()
         print(item)
         queue.task_done()
